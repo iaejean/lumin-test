@@ -1,0 +1,6 @@
+{
+  "uri": "http://localhost:8080/subscribe/test",
+  "method": "GET",
+  "body": "{ url: \"http://localhost:8000/event\"}",
+  "headers": {}
+}

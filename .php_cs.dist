@@ -1,0 +1,17 @@
+<?php
+
+return PhpCsFixer\Config::create()
+    ->setRules([
+        '@PSR2' => true,
+        '@Symfony' => true,
+        'phpdoc_no_package' => false,
+        'phpdoc_summary' => false,
+        'phpdoc_align' => ['align' => 'left'],
+        'phpdoc_separation' => false,
+        'trailing_comma_in_multiline_array' => false,
+        'array_syntax' => ['syntax' => 'short'],
+    ])
+    ->setFinder(
+        PhpCsFixer\Finder::create()
+            ->in([__DIR__.'/src', __DIR__.'/tests'])
+    );
