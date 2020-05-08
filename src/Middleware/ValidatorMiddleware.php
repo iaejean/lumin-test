@@ -17,14 +17,10 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 final class ValidatorMiddleware implements MiddlewareInterface
 {
-    /**
-     * @var ValidatorInterface
-     */
     private ValidatorInterface $validator;
 
     /**
      * ValidatorMiddleware constructor.
-     * @param ValidatorInterface $validator
      */
     public function __construct(ValidatorInterface $validator)
     {
@@ -32,9 +28,6 @@ final class ValidatorMiddleware implements MiddlewareInterface
     }
 
     /**
-     * @param Envelope $envelope
-     * @param StackInterface $stack
-     * @return Envelope
      * @throws InvalidMessageException
      */
     public function handle(Envelope $envelope, StackInterface $stack): Envelope

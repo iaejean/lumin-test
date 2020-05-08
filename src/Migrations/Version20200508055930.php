@@ -14,7 +14,7 @@ use Doctrine\Migrations\AbstractMigration;
 final class Version20200508055930 extends AbstractMigration
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getDescription(): string
     {
@@ -22,7 +22,7 @@ final class Version20200508055930 extends AbstractMigration
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function up(Schema $schema): void
     {
@@ -61,7 +61,7 @@ final class Version20200508055930 extends AbstractMigration
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function down(Schema $schema): void
     {

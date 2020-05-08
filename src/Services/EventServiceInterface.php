@@ -12,9 +12,5 @@ use App\Entity\Event;
  */
 interface EventServiceInterface
 {
-    /**
-     * @param Event $topic
-     * @return Event
-     */
     public function add(Event $topic): Event;
 }

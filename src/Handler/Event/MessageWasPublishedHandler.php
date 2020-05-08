@@ -14,23 +14,16 @@ use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
  */
 class MessageWasPublishedHandler implements MessageHandlerInterface
 {
-    /**
-     * @var PublisherInterface
-     */
     private PublisherInterface $publisher;
 
     /**
      * MessageWasPublishedHandler constructor.
-     * @param PublisherInterface $publisher
      */
     public function __construct(PublisherInterface $publisher)
     {
         $this->publisher = $publisher;
     }
 
-    /**
-     * @param MessageWasPublished $message
-     */
     public function __invoke(MessageWasPublished $message)
     {
         $this->publisher->emmitMessage($message->getMessage());

@@ -16,14 +16,10 @@ use Symfony\Component\Serializer\SerializerInterface;
  */
 final class SerializerParamConverter implements ParamConverterInterface
 {
-    /**
-     * @var SerializerInterface
-     */
     private SerializerInterface $serializer;
 
     /**
      * SerializerParamConverter constructor.
-     * @param SerializerInterface $serializer
      */
     public function __construct(SerializerInterface $serializer)
     {
@@ -31,7 +27,7 @@ final class SerializerParamConverter implements ParamConverterInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function apply(Request $request, ParamConverter $configuration)
     {
@@ -50,7 +46,7 @@ final class SerializerParamConverter implements ParamConverterInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function supports(ParamConverter $configuration)
     {

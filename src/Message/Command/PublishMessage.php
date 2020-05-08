@@ -16,20 +16,16 @@ class PublishMessage
 {
     /**
      * @Assert\Valid(groups={"default"})
-     * @var Message
      */
     private Message $message;
 
     /**
      * @Assert\Valid(groups={"default"})
-     * @var Topic
      */
     private Topic $topic;
 
     /**
      * PublishMessage constructor.
-     * @param Message $message
-     * @param Topic $topic
      */
     public function __construct(Message $message, Topic $topic)
     {
@@ -37,17 +33,11 @@ class PublishMessage
         $this->topic = $topic;
     }
 
-    /**
-     * @return Message
-     */
     public function getMessage(): Message
     {
         return $this->message;
     }
 
-    /**
-     * @return Topic
-     */
     public function getTopic(): Topic
     {
         return $this->topic;

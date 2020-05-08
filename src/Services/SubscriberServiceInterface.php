@@ -12,15 +12,7 @@ use App\Entity\Subscriber;
  */
 interface SubscriberServiceInterface
 {
-    /**
-     * @param Subscriber $subscriber
-     * @return Subscriber
-     */
     public function add(Subscriber $subscriber): Subscriber;
 
-    /**
-     * @param string $url
-     * @return Subscriber|null
-     */
     public function getByUrl(string $url): ?Subscriber;
 }

@@ -12,15 +12,7 @@ use App\Entity\Topic;
  */
 interface TopicServiceInterface
 {
-    /**
-     * @param Topic $topic
-     * @return Topic
-     */
     public function add(Topic $topic): Topic;
 
-    /**
-     * @param string $name
-     * @return Topic|null
-     */
     public function getByName(string $name): ?Topic;
 }

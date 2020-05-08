@@ -15,22 +15,17 @@ class RegisterEvent
 {
     /**
      * @Assert\Valid(groups={"default"})
-     * @var Event
      */
     private Event $event;
 
     /**
      * RegisterEvent constructor.
-     * @param Event $event
      */
     public function __construct(Event $event)
     {
         $this->event = $event;
     }
 
-    /**
-     * @return Event
-     */
     public function getEvent(): Event
     {
         return $this->event;

@@ -14,23 +14,16 @@ use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
  */
 final class SubscribeEventHandler implements MessageHandlerInterface
 {
-    /**
-     * @var PublisherInterface
-     */
     private PublisherInterface $publisher;
 
     /**
      * SubscribeEventHandler constructor.
-     * @param PublisherInterface $publisher
      */
     public function __construct(PublisherInterface $publisher)
     {
         $this->publisher = $publisher;
     }
 
-    /**
-     * @param SubscribeEvent $message
-     */
     public function __invoke(SubscribeEvent $message)
     {
         $this->publisher->subscribe($message->getSubscriber(), $message->getTopic());

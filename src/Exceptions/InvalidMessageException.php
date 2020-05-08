@@ -14,7 +14,6 @@ class InvalidMessageException extends \Exception
 {
     /**
      * InvalidMessageException constructor.
-     * @param string $message
      */
     private function __construct(string $message)
     {
@@ -23,7 +22,6 @@ class InvalidMessageException extends \Exception
 
     /**
      * @param $errors
-     * @return InvalidMessageException
      */
     public static function errors(ConstraintViolationListInterface $constraints): InvalidMessageException
     {
@@ -44,20 +42,14 @@ class InvalidMessageException extends \Exception
             $errors[] = trim(sprintf('%s %s', $error->getPropertyPath(), mb_strtolower($error->getMessage())));
         }
 
-        return new InvalidMessageException('Invalid message: ' . implode(', ', $errors));
+        return new InvalidMessageException('Invalid message: '.implode(', ', $errors));
     }
 
-    /**
-     * @return InvalidMessageException
-     */
     public static function missingContent(): InvalidMessageException
     {
         return new InvalidMessageException('missing content');
     }
 
-    /**
-     * @return InvalidMessageException
-     */
     public static function alreadyExist(): InvalidMessageException
     {
         return new InvalidMessageException('already exists');

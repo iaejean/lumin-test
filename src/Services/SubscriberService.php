@@ -13,14 +13,10 @@ use Doctrine\ORM\EntityManagerInterface;
  */
 class SubscriberService implements SubscriberServiceInterface
 {
-    /**
-     * @var EntityManagerInterface
-     */
     private EntityManagerInterface $entityManager;
 
     /**
      * SubscriberService constructor.
-     * @param EntityManagerInterface $entityManager
      */
     public function __construct(EntityManagerInterface $entityManager)
     {
@@ -28,23 +24,25 @@ class SubscriberService implements SubscriberServiceInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function add(Subscriber $topic): Subscriber
     {
         $this->entityManager->persist($topic);
         $this->entityManager->flush();
+
         return $topic;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getByUrl(string $url): ?Subscriber
     {
         $subscriberRepository = $this->entityManager->getRepository(Subscriber::class);
         /** @var Subscriber|null $topic */
         $topic = $subscriberRepository->findOneBy(['url' => $url]);
+
         return $topic;
     }
 }

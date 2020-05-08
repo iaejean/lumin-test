@@ -13,14 +13,10 @@ use Doctrine\ORM\EntityManagerInterface;
  */
 class TopicService implements TopicServiceInterface
 {
-    /**
-     * @var EntityManagerInterface
-     */
     private EntityManagerInterface $entityManager;
 
     /**
      * TopicService constructor.
-     * @param EntityManagerInterface $entityManager
      */
     public function __construct(EntityManagerInterface $entityManager)
     {
@@ -28,23 +24,25 @@ class TopicService implements TopicServiceInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function add(Topic $topic): Topic
     {
         $this->entityManager->persist($topic);
         $this->entityManager->flush();
+
         return $topic;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getByName(string $name): ?Topic
     {
         $topicRepository = $this->entityManager->getRepository(Topic::class);
         /** @var Topic|null $topic */
         $topic = $topicRepository->findOneBy(['name' => $name]);
+
         return $topic;
     }
 }

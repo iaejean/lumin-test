@@ -21,50 +21,22 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
  */
 class Publisher implements PublisherInterface
 {
-    /**
-     * @var EntityManagerInterface
-     */
     private EntityManagerInterface $entityManager;
 
-    /**
-     * @var HttpClientInterface
-     */
     private HttpClientInterface $httpClient;
 
-    /**
-     * @var TopicServiceInterface
-     */
     private TopicServiceInterface $topicService;
 
-    /**
-     * @var SubscriberServiceInterface
-     */
     private SubscriberServiceInterface $subscriberService;
 
-    /**
-     * @var EventServiceInterface
-     */
     private EventServiceInterface $eventService;
 
-    /**
-     * @var MessageBusInterface
-     */
     private MessageBusInterface $messageBus;
 
-    /**
-     * @var LoggerInterface
-     */
     private LoggerInterface $logger;
 
     /**
      * Publisher constructor.
-     * @param EntityManagerInterface $entityManager
-     * @param HttpClientInterface $httpClient
-     * @param TopicServiceInterface $topicService
-     * @param SubscriberServiceInterface $subscriberService
-     * @param EventServiceInterface $eventService
-     * @param MessageBusInterface $messageBus
-     * @param LoggerInterface $logger
      */
     public function __construct(
         EntityManagerInterface $entityManager,
@@ -85,7 +57,7 @@ class Publisher implements PublisherInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function subscribe(Subscriber $subscriber, Topic $topic): bool
     {
@@ -114,17 +86,18 @@ class Publisher implements PublisherInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function publish(Message $message, Topic $topic): bool
     {
         $this->logger->info('Publish a new message');
         $this->messageBus->dispatch(new MessageWasPublished(Message::create($message->getMessage(), $topic)));
+
         return true;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function emmitMessage(Message $message): bool
     {
@@ -149,6 +122,7 @@ class Publisher implements PublisherInterface
                     } catch (\Exception $exception) {
                         $this->logger->warning($exception->getMessage());
                     }
+
                     return true;
                 }
             );
@@ -157,12 +131,13 @@ class Publisher implements PublisherInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function registerEvent(Event $event): bool
     {
         $this->logger->info('Register event');
         $this->eventService->add($event);
+
         return true;
     }
 }

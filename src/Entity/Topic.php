@@ -24,7 +24,6 @@ class Topic
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(name="uuid", type="text", length=45, nullable=false)
      * @Assert\NotBlank()
-     * @var string
      */
     private string $uuid;
 
@@ -32,7 +31,6 @@ class Topic
      * @ORM\Column(name="name", type="text", length=200, nullable=false)
      * @Assert\NotBlank()
      * @Assert\Length(maxMessage="200", min="0")
-     * @var string
      */
     private string $name;
 
@@ -46,7 +44,6 @@ class Topic
      *     @ORM\JoinColumn(name="subscriber_uuid", referencedColumnName="uuid")
      *   }
      * )
-     * @var Collection|null
      */
     private ?Collection $subscribers;
 
@@ -58,30 +55,20 @@ class Topic
         $this->subscribers = new ArrayCollection();
     }
 
-    /**
-     * @param string $name
-     * @param Collection|null $subscribers
-     * @return Topic
-     */
     public static function create(string $name, ?Collection $subscribers = null): Topic
     {
         $topic = new Topic();
         $topic->name = $name;
         $topic->subscribers = $subscribers ?? new ArrayCollection();
+
         return  $topic;
     }
 
-    /**
-     * @return string
-     */
     public function getUuid(): string
     {
         return $this->uuid;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
@@ -95,13 +82,10 @@ class Topic
         return $this->subscribers;
     }
 
-    /**
-     * @param Subscriber $subscriber
-     * @return Topic
-     */
     public function addSubscriber(Subscriber $subscriber): Topic
     {
         $this->subscribers->add($subscriber);
+
         return $this;
     }
 }

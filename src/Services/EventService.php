@@ -13,14 +13,10 @@ use Doctrine\ORM\EntityManagerInterface;
  */
 class EventService implements EventServiceInterface
 {
-    /**
-     * @var EntityManagerInterface
-     */
     private EntityManagerInterface $entityManager;
 
     /**
      * EventService constructor.
-     * @param EntityManagerInterface $entityManager
      */
     public function __construct(EntityManagerInterface $entityManager)
     {
@@ -28,12 +24,13 @@ class EventService implements EventServiceInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function add(Event $topic): Event
     {
         $this->entityManager->persist($topic);
         $this->entityManager->flush();
+
         return $topic;
     }
 }

@@ -15,22 +15,17 @@ class MessageWasPublished
 {
     /**
      * @Assert\Valid(groups={"default"})
-     * @var Message
      */
     private Message $message;
 
     /**
      * MessageWasPublished constructor.
-     * @param Message $message
      */
     public function __construct(Message $message)
     {
         $this->message = $message;
     }
 
-    /**
-     * @return Message
-     */
     public function getMessage(): Message
     {
         return $this->message;

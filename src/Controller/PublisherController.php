@@ -45,9 +45,6 @@ final class PublisherController extends AbstractController
      * )
      * @Route(methods={"POST"}, path="subscribe/{topic}")
      * @ParamConverter(name="subscriber", class="App\Entity\Subscriber")
-     * @param string $topic
-     * @param Subscriber $subscriber
-     * @return Response
      */
     public function postSubscribeAction(string $topic, Subscriber $subscriber): Response
     {
@@ -65,9 +62,6 @@ final class PublisherController extends AbstractController
      *     @Model(type=Message::class, groups={"default"})
      * )
      * @ParamConverter(name="message", class="App\Entity\Message")
-     * @param string $topic
-     * @param Message $message
-     * @return Response
      */
     public function postPublishAction(string $topic, Message $message): Response
     {
@@ -85,8 +79,6 @@ final class PublisherController extends AbstractController
      *     @Model(type=Event::class, groups={"default"})
      * )
      * @ParamConverter(name="event", class="App\Entity\Event")
-     * @param Event $event
-     * @return Response
      */
     public function postEventAction(Event $event): Response
     {
